@@ -1,0 +1,25 @@
+<div class="container">
+  <hr/>
+  <div class="col-lg-8 offset-lg-2 col-sm-12 offset-sm-0 col-xs-12 offset-xs-0">
+    <h5 class="text-center">
+      <img src="./../assets/images/current.png" alt="current.png">&nbsp;
+      <small class="text-muted">{{currentAddress}}</small>
+    </h5>
+    <hr/>
+    <div class="list-group">
+      <a *ngFor="let a of nearAddresses" href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-10">
+        <div class="d-flex w-100 justify-content-between">
+          <h6 class="mb-1">
+            <strong>{{a.name}}</strong>
+          </h6>
+          <small *ngIf="a.opening_hours">{{ a.opening_hours.open_now ? 'Opened' : 'Closed' }} Now</small>
+        </div>
+        <small>
+          <strong>Address:</strong> {{(a.formatted_address | AddressFilter).address}}</small>
+        <br/>
+        <small>
+          <strong>Postal Code:</strong> {{(a.formatted_address | AddressFilter).postalCode}}</small>
+      </a>
+    </div>
+  </div>
+</div>
